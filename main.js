@@ -1,33 +1,51 @@
 console.log(" Hola mundo ");
 
-const nombre = prompt("Ingresa tu nombre");
-const usuario = prompt("Como quieres que te llamemos? ");
-const contrasena = prompt("Ahora tu contraseña");
+var nombre = prompt("Ingresa tu nombre");
+var usuario = prompt("Como quieres que te llamemos? ");
+var contrasena = prompt("Ahora tu contraseña");
 
 
 alert ("Hola, por favor espera mientras te logueamos. " + nombre + ", revisaremos si tus datos coinciden y en caso que lo hagan procederemos a loguearte en tu cuenta");
 
 var password = "123456a";
 var user = "Asphy";
-
-
-if (contrasena  == password && usuario == user ) {
-    alert (" Bienvenido a nuestro sitio web " + usuario );
-} else if ( contrasena != password && usuario == user){
-    alert ("Contraseña Incorrecta");
-} else if ( contrasena == password && usuario != user){
-    alert ("Usuario Incorrecto");
-} else {
-   alert ("Usuario y/o Contraseña Incorrectos");
-}
+var email = "andres@gmail.com";
+var noArroba = true;
 
 const arroba = "@"
 
-switch ( arroba ){
-    case "@":
-        prompt (" Agrega un mail de forma correcta ")
+while ( true ) {
+    if (contrasena  == password && usuario == user ) {
+        alert (" Bienvenido a nuestro sitio web " + usuario );
+        for (var i = 0; i < email.length; i++){
+            if (arroba == email[i]){
+               console.log("Se encotro un arroba")
+            email = prompt("ingrese su email") 
+               break
+            }else{
+                if ( noArroba ){
+                    alert("No se encontro un arroba");
+                    noArroba = false;
+                }
+            }
+        }
         break;
+    } else if ( contrasena != password && usuario == user){
+        alert ("Contraseña Incorrecta");
+        contrasena = prompt("Ingresa de forma correcta tu contraseña");
+    } else if ( contrasena == password && usuario != user){
+        alert ("Usuario Incorrecto");
+        usuario = prompt("Ingresa de forma correcta tu usuario");
+    }else{
+        usuario = prompt("Ingresa de forma correcta tu usuario");
+        contrasena = prompt("Ingresa de forma correcta tu contraseña");
+        alert ("Usuario y/o Contraseña Incorrectos");
+        
+    }
 }
+
+
+
 
 
 
