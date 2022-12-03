@@ -9,10 +9,11 @@ var user = "admin";
 var email = "admin@gmail.com";
 var noArroba = true;
 var tmpPassword = "";
-
+var change = '';
 const arroba = "@";
 
 while (true) {
+   
     if (contrasena == password && usuario == user && contrasena.length > 8) {
         alert(" La contraseña es segura ");
         alert(" Bienvenido a nuestro sitio web " + usuario);
@@ -27,30 +28,35 @@ while (true) {
                 }
             }
         }
-        for (var i = 0; i < password.length; i++) {
-            if (Number(password[i])) {
+        for (var i = 0; i < contrasena.length; i++) {
+            if (Number(contrasena[i])) {
                 alert(" Esta contraseña tiene un número ");
                 break;
+            }else{
+                
+                if (change.toLowerCase() == "si" && tmpPassword != contrasena) {
+                    alert('Su contraseña ha sido cambiada exitosamente');
+                    password = contrasena
+                    break
+                }else{
+                    change = prompt("Su contraseña debe tener caracteres alfanumericos. Desea cambiarla?");
+                    if (change.toLowerCase() == "si") {
+                        tmpPassword = contrasena;
+                        contrasena = prompt("Ingrese una nueva contraseña");
+                    }
+                    if (change.toLowerCase() == "no") {
+                        alert("Bienvenido nuevamente :)");
+                        break;
+                    }
+                }
+             
+
+                
             }
         }
-
-        if (i == password.length) {
-            var change = prompt("Su contraseña debe tener caracteres alfanumericos. Desea cambiarla?");
-
-            if (change.toLowerCase() == "si") {
-                tmpPassword = password;
-                password = prompt("Ingrese una nueva contraseña");
-            }
-            if (change.toLowerCase() == "no") {
-                alert("Bienvenido nuevamente :)");
-                break;
-            }
-        }
-
-        if (change.toLowerCase() == "si" && tmpPassword != password) {
-            alert("Su contraseña se ha cambiado de forma correcta");
-            break;
-        }
+        console.log(contrasena, usuario, password, user);
+        break   
+        
     } else if (contrasena != password && usuario == user) {
         alert("Contraseña Incorrecta");
         contrasena = prompt("Ingresa de forma correcta tu contraseña");
